@@ -4,7 +4,7 @@
   "description": "MAD9124 Mobile API Development",
   "main": "app.js",
   "scripts": {
-    "dev": "DEBUG=a2* PORT=6660 nodemon app.js"
+    "dev": "docker-compose down && docker-compose up -d && DEBUG=a2* PORT=6660 nodemon app.js"
   },
   "keywords": [],
   "author": "Ravi Chandra Rachamalla",
