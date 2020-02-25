@@ -12,5 +12,5 @@ app.use(sanitizeMongo()); //catchall to just sanitize all data for mongo use
 // app.use('api/courses', require('./routes/courses.js'));
 // app.use('api/students', require('./routes/students.js')); turn on when made
 
-const port = proces.env.PORT || 3030;
+const port = process.env.PORT || 3030;
 app.listen(port, () => debug(`Server listening on port: ${port}`));

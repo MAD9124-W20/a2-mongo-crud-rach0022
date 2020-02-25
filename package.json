@@ -4,7 +4,7 @@
   "description": "MAD9124 Mobile API Development",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "DEBUG=a2* PORT=6660 nodemon app.js"
   },
   "keywords": [],
   "author": "Ravi Chandra Rachamalla",
@@ -22,6 +22,7 @@
     "express": "^4.17.1",
     "express-mongo-sanitize": "^1.3.2",
     "mongoose": "^5.9.2",
+    "nodemon": "^2.0.2",
     "xss": "^1.0.6"
   },
   "devDependencies": {}
