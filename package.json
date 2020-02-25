@@ -1,12 +1,25 @@
 {
-  "name": "a2",
+  "name": "a2-mongo-crud",
   "version": "1.0.0",
-  "description": "",
+  "description": "MAD9124 Mobile API Development",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Ravi Chandra Rachamalla",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MAD9124-W20/a2-mongo-crud-rach0022.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MAD9124-W20/a2-mongo-crud-rach0022/issues"
+  },
+  "homepage": "https://github.com/MAD9124-W20/a2-mongo-crud-rach0022#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.2"
+  },
+  "devDependencies": {}
 }
