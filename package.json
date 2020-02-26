@@ -4,10 +4,12 @@
   "description": "MAD9124 Mobile API Development",
   "main": "app.js",
   "scripts": {
-    "dev": "docker-compose down && docker-compose up -d && DEBUG=a2* PORT=6660 nodemon app.js"
+    "dev": "DEBUG=a2* PORT=6660 nodemon app.js",
+    "server-d": "docker-compose down",
+    "server-u": "docker-compose up -d"
   },
   "keywords": [],
-  "author": "Ravi Chandra Rachamalla",
+  "author": "Ravi Rachamalla <rach0022@algonquinlive.com>",
   "license": "ISC",
   "repository": {
     "type": "git",

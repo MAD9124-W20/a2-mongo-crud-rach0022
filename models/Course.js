@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const student = require('./Student.js');
 
-const schema = new mongoose.schema({
+const schema = new mongoose.Schema({
     code: String,
     title: String,
     description: String,
