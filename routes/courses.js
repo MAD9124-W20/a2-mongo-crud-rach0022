@@ -5,7 +5,7 @@ const validateCourseId = require('../middleware/validateCourseId.js');
 const Course = require('../models/Course.js');
 const sanitizeBody = require('../middleware/sanitizeBody.js');
 
-router.use('/:courseId', validateCourseId);
+router.use('/:id', validateCourseId);
 
 router.get('/', async (req,res) =>{
     //because find is asynchronous we must await the result
@@ -20,6 +20,11 @@ router.post('/', sanitizeBody, async (req, res) =>{
     await newCourse.save();
 
     res.status(201).send({data: newCourse});
+});
+
+router.get('/:id', async (req, res) => {
+    const course = await Course.findById(req.courseId);
+    res.send({data: course});
 });
 
 module.exports = router; 

@@ -4,12 +4,15 @@ const Course = require('../models/Course.js'); //get a reference to the course m
 const debug = require('debug')('a2:validateCourseId');
 
 const validateCourseId = (req, res, next) => {
-    const courseId = parseInt(req.params.courseId);
+    const courseId = req.params.id;
+    // debug(courseId);
     const match = Course.findById(courseId, (err, data) =>{
         if(err){
+            // debug(err);
             sendResourceNotFound(req, res);
         } else {
-            console.log(data); //change to req.validatedId = data._id?
+            // debug(data); //change to req.validatedId = data._id?
+            req.courseId = courseId;
             next();
         }
     })
@@ -22,7 +25,7 @@ function sendResourceNotFound(req, res){
                 status: 'Not Found',
                 code: '404',
                 title: 'Resource does not exist',
-                description: `We could not find a car with id: ${req.params.id}`
+                description: `We could not find a course with the  id: ${req.params.id}`
             }
         ]
     })
