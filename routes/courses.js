@@ -28,7 +28,20 @@ router.get('/:id', async (req, res) => {
 });
 
 router.patch('/:id', sanitizeBody, async (req, res) =>{
-
+    const course = await Course.findByIdAndUpdate(
+        req.courseId,
+        req.sanitizedBody,
+        {
+            new: true,
+            overwrite: true,
+            runValidators: true,
+            useFindAndModify: false
+        },
+        (err, data) =>{
+            debug(err, data);
+            res.send(200) //send the status code of 200 to say it all went good
+        }
+    )
 });
 
 router.put('/:id', sanitizeBody, async (req, res) =>{
