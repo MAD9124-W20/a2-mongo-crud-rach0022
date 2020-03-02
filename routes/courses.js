@@ -34,7 +34,9 @@ router.patch('/:id', sanitizeBody, async (req, res) =>{
         {
             new: true,
             runValidators: true,
-            useFindAndModify: false
+            useFindAndModify: false //taken from mongo docs
+            
+            // and from https://stackoverflow.com/questions/52572852/deprecationwarning-collection-findandmodify-is-deprecated-use-findoneandupdate 
         },
         (err, data) =>{
             debug(err, data);
@@ -44,7 +46,20 @@ router.patch('/:id', sanitizeBody, async (req, res) =>{
 });
 
 router.put('/:id', sanitizeBody, async (req, res) =>{
-
+    const course = await Course.findByIdAndUpdate(
+        req.courseId,
+        req.sanitizedBody,
+        {
+            new: true,
+            runValidators: true,
+            overwrite: true,
+            useFindAndModify: false
+        },
+        (err, data) =>{
+            debug(err, data);
+            res.send({data}) //send the status code of 200 to say it all went
+        }
+    )
 });
 
 router.delete('/:id', async (req, res) =>{
