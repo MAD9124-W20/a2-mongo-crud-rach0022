@@ -9,7 +9,7 @@ const express = require('express');
 const app = express();
 app.use(express.json()); //allow the app to use json() parser for the requests
 app.use(sanitizeMongo()); //catchall to just sanitize all data for mongo use
-app.use('api/courses', require('./routes/courses.js'));
+app.use('/api/courses', require('./routes/courses.js'));
 // app.use('api/students', require('./routes/students.js')); turn on when made
 
 const port = process.env.PORT || 3030;

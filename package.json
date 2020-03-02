@@ -4,7 +4,7 @@
   "description": "MAD9124 Mobile API Development",
   "main": "app.js",
   "scripts": {
-    "dev": "DEBUG=a2* PORT=6660 nodemon app.js",
+    "dev": "DEBUG=a2* nodemon app.js",
     "server-d": "docker-compose down",
     "server-u": "docker-compose up -d"
   },

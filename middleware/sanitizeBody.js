@@ -16,7 +16,8 @@ const stripTags = payload => {
         if(attributes[key] instanceof Array){ //to check if the element is an array
             attributes[key] = attributes[key].map(element =>{
                 //either check if its a string or recursively pass it again to strip tags to go down another level
-                return cleanedElement = typeof element == 'string' ? sanitize(element) : stripTags(element);
+                let cleanedElement = typeof element === 'string' ? sanitize(element) : stripTags(element);
+                return cleanedElement;
             })
         } else if(attributes[key] instanceof Object){ //if its an object send it down another level recursively
             attributes[key] = stripTags(attributes[key]);
@@ -24,6 +25,7 @@ const stripTags = payload => {
             attributes[key] = sanitize(attributes[key]);
         }
     };
+    debug(attributes);
     return attributes;
 }
 
@@ -31,6 +33,6 @@ const sanitize = sourceString => {
     sourceString = xss(sourceString, {
         whitelist: [],
         stripIgnoreTag: true,
-        stripIgnoreTagBody: true
+        stripIgnoreTagBody: ['script']
     });
 }

@@ -1,5 +1,6 @@
 //routes/courses.js
 const router = require('express').Router();
+const debug = require('debug')('a2:CourseRouter')
 const validateCourseId = require('../middleware/validateCourseId.js');
 const Course = require('../models/Course.js');
 const sanitizeBody = require('../middleware/sanitizeBody.js');
@@ -15,6 +16,7 @@ router.get('/', async (req,res) =>{
 
 router.post('/', sanitizeBody, async (req, res) =>{
     let newCourse = new Course(req.sanitizedBody);
+    debug(req.sanitizedBody);
     await newCourse.save();
 
     res.status(201).send({data: newCourse});
