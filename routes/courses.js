@@ -27,4 +27,18 @@ router.get('/:id', async (req, res) => {
     res.send({data: course});
 });
 
+router.patch('/:id', sanitizeBody, async (req, res) =>{
+
+});
+
+router.put('/:id', sanitizeBody, async (req, res) =>{
+
+});
+
+router.delete('/:id', async (req, res) =>{
+    const course = await Course.findByIdAndRemove(req.courseId);
+    debug(course);
+    res.send({data: course});
+});
+
 module.exports = router; 
