@@ -27,3 +27,5 @@ function sendResourceNotFound(req, res){
         ]
     })
 };
+
+module.exports = validateStudentId; 
