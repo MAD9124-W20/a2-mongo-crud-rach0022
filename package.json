@@ -1,5 +1,5 @@
 {
-  "name": "a2-mongo-crud",
+  "name": "a2-mongo-crud-clistr",
   "version": "1.0.0",
   "description": "MAD9124 Mobile API Development",
   "main": "app.js",
