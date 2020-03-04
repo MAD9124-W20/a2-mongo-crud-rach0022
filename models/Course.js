@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const student = require('./Student.js');
+const Student = require('./Student.js');
 
 const schema = new mongoose.Schema({
     code: String,
