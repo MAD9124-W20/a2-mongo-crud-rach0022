@@ -9,7 +9,7 @@ router.use('/:id', validateStudentId);
 
 router.get('/', async (req, res) =>{
     const data = await Student.find();
-    res.send({data});
+    res.status(200).send({data});
 });
 
 router.post('/', sanitizeBody, async (req, res) =>{

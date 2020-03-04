@@ -24,7 +24,7 @@ router.post('/', sanitizeBody, async (req, res) =>{
 
 router.get('/:id', async (req, res) => {
     const course = await Course.findById(req.courseId).populate('students');
-    res.send({data: course});
+    res.status(200).send({data: course});
 });
 
 router.patch('/:id', sanitizeBody, async (req, res) =>{
