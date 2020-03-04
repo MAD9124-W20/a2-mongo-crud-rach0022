@@ -11,7 +11,7 @@ router.get('/', async (req,res) =>{
     //because find is asynchronous we must await the result
     //and make the whole function async
     const data = await Course.find().populate('students');
-    res.send({data}); //shortcut of data:data cause the title and value have the same label
+    res.status(200).send({data}); //send status code 200 for ok
 });
 
 router.post('/', sanitizeBody, async (req, res) =>{
@@ -19,7 +19,7 @@ router.post('/', sanitizeBody, async (req, res) =>{
     debug(req.sanitizedBody);
     await newCourse.save();
 
-    res.status(201).send({data: newCourse});
+    res.status(201).send({data: newCourse}); //status code 201 to say created
 });
 
 router.get('/:id', async (req, res) => {
@@ -40,7 +40,7 @@ router.patch('/:id', sanitizeBody, async (req, res) =>{
         },
         (err, data) =>{
             debug(err, data);
-            res.send({data}) //send the status code of 200 to say it all went
+            res.status(200).send({data}) //send the status code of 200 to say ok
         }
     ).populate('students')
 });
@@ -57,7 +57,7 @@ router.put('/:id', sanitizeBody, async (req, res) =>{
         },
         (err, data) =>{
             debug(err, data);
-            res.send({data}) //send the status code of 200 to say it all went
+            res.status(200).send({data}) //send the status code of 200 to say ok
         }
     ).populate('students')
 });
@@ -65,7 +65,7 @@ router.put('/:id', sanitizeBody, async (req, res) =>{
 router.delete('/:id', async (req, res) =>{
     const course = await Course.findByIdAndRemove(req.courseId);
     debug(course);
-    res.send({data: course});
+    res.status(202).send({data: course}); //status code 202 for accepted
 });
 
 module.exports = router; 
