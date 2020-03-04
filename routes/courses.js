@@ -10,7 +10,7 @@ router.use('/:id', validateCourseId);
 router.get('/', async (req,res) =>{
     //because find is asynchronous we must await the result
     //and make the whole function async
-    const data = await Course.find();
+    const data = await Course.find().populate('students');
     res.send({data}); //shortcut of data:data cause the title and value have the same label
 });
 
@@ -23,7 +23,7 @@ router.post('/', sanitizeBody, async (req, res) =>{
 });
 
 router.get('/:id', async (req, res) => {
-    const course = await Course.findById(req.courseId);
+    const course = await Course.findById(req.courseId).populate('students');
     res.send({data: course});
 });
 
@@ -42,7 +42,7 @@ router.patch('/:id', sanitizeBody, async (req, res) =>{
             debug(err, data);
             res.send({data}) //send the status code of 200 to say it all went
         }
-    )
+    ).populate('students')
 });
 
 router.put('/:id', sanitizeBody, async (req, res) =>{
@@ -59,7 +59,7 @@ router.put('/:id', sanitizeBody, async (req, res) =>{
             debug(err, data);
             res.send({data}) //send the status code of 200 to say it all went
         }
-    )
+    ).populate('students')
 });
 
 router.delete('/:id', async (req, res) =>{
